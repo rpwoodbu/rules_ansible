@@ -1,0 +1,24 @@
+load("@rules_ansible//ansible:defs.bzl", "ansible_collections", "ansible_playbook")
+
+ansible_playbook(
+    name = "my_playbook",
+    src = "my_playbook.yaml",
+    inventory = "inventory.yaml",
+    collections = ":collections",
+    # If you have a collection which depends on a Python wheel, you can load
+    # that using `rules_python` in the usual way and add it with `deps` here.
+)
+
+# Use `ansible_collections()` to "install" collection tarballs (hermetically, of
+# course). You can only refer to one "ansible_collections()" target per
+# playbook, so it is reasonable to put all your collections into a single target
+# and use it for all playbooks.
+ansible_collections(
+    name = "collections",
+    collections = [
+        # See `collections.MODULE.bazel` for how to fetch the collection
+        # tarballs. Use this style of label to reference each tarball.
+        "@ansible_community_general//file",
+        # ...more as needed...
+    ],
+)

@@ -1,0 +1,7 @@
+- name: Create a marker file
+  hosts: all
+  tasks:
+    - name: Write a file to /tmp
+      ansible.builtin.copy:
+        content: "rules_ansible was here.\n"
+        dest: /tmp/rules_ansible_was_here

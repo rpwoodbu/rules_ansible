@@ -1,0 +1,12 @@
+- name: Create a marker file and tar it
+  hosts: all
+  tasks:
+    - name: Write a file to /tmp
+      ansible.builtin.copy:
+        content: "rules_ansible was here.\n"
+        dest: /tmp/rules_ansible_was_here
+    - name: Tar up the file written into /tmp
+      community.general.archive:
+        path: /tmp/rules_ansible_was_here
+        dest: /tmp/rules_ansible_was_here.tar
+        format: tar
