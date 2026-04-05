@@ -15,4 +15,17 @@ pip.parse(
 )
 use_repo(pip, "pypi_ansible")
 
-include("//examples/collections:collections.MODULE.bazel")
+#
+# The remainder is used only by `examples`.
+#
+
+http_file = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_file")
+
+# Use `http_file()` to fetch the collection tarball that you need. Use this 
+# multiple times to fetch all needed collections.
+http_file(
+    name = "ansible_community_general",
+    url = "https://galaxy.ansible.com/api/v3/plugin/ansible/content/published/collections/artifacts/community-general-12.5.0.tar.gz",
+    integrity = "sha256-PikCQqf3aMINHk7CvkqCgU8CB6tSnEL+cgYE4OonMMw=",
+    dev_dependency = True,  # For example purposes; feel free to omit.
+)
