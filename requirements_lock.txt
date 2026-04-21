@@ -4,9 +4,9 @@
 #
 #    bazel run //:requirements.update
 #
-ansible-core==2.20.4 \
-    --hash=sha256:2060c06195ada0cca0ac3128025d1167f567479da465897d818982fbe28bed1f \
-    --hash=sha256:fb3a8f0301aab863f847f70aea9cbd47d635c6a283b441c56cec881b4aedcb04
+ansible-core==2.20.5 \
+    --hash=sha256:82e3049d95e6e02e5d20d4a5a8e10533a55e0cc52e878e4cf77166c45410f16f \
+    --hash=sha256:ff6ff15c6a37fda07dc7400207e17e93727b24173ca48c068b3311a50d75ecc3
     # via -r requirements.in
 cffi==2.0.0 \
     --hash=sha256:00bdf7acc5f795150faa6957054fbbca2439db2f775ce831222b66f192f03beb \
