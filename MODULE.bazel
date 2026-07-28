@@ -1,4 +1,4 @@
-module(name = "rules_ansible", version = "0.0.3")
+module(name = "rules_ansible", version = "0.0.4")
 
 bazel_dep(name = "aspect_rules_py", version = "1.11.7")
 bazel_dep(name = "rules_python", version = "2.0.3")
