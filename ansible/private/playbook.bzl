@@ -1,6 +1,6 @@
 # Aspect's `py_binary` gives us `venv`, which ensures that the Python that
 # Ansible spawns when doing local tasks can load deps.
-load("@aspect_rules_py//py:defs.bzl", aspect_py_binary = "py_binary")
+load("@aspect_rules_py//py:defs.bzl", aspect_py_binary = "py_binary", aspect_py_test = "py_test")
 load("@rules_python//python/entry_points:py_console_script_binary.bzl", "py_console_script_binary")
 
 def _ansible_playbook_impl(name, visibility, src, collections, data, deps, env, inventory, _pkg):
@@ -26,7 +26,26 @@ def _ansible_playbook_impl(name, visibility, src, collections, data, deps, env, 
         env = addl_env | env,
     )
 
+    py_console_script_binary(
+        name = "{}_syntax_check_test".format(name),
+        pkg = _pkg,
+        script = "ansible-playbook",
+        binary_rule = aspect_py_test,
+        args = [
+            "--syntax-check",
+            "$(location {})".format(src),
+        ],
+        data = addl_data + data,
+        deps = deps,
+        env = addl_env | env,
+    )
+
 ansible_playbook = macro(
+    doc = """Runs an Ansible playbook.
+
+Also creates an implicit test target `{name}_syntax_check_test` which runs
+`ansible-playbook --syntax-check` on the playbook.
+""",
     implementation = _ansible_playbook_impl,
     attrs = {
         "src": attr.label(

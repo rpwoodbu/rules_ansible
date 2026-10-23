@@ -15,3 +15,12 @@ You can add any `ansible-playbook` flags to the command line that you may want:
 # Trailing comma is necessary if using `-i` to specify a single host.
 bazel run //examples/collections:my_playbook -- --check --diff -i some_host.mydomain.com,
 ```
+
+## Syntax checking
+
+An implicit test target is automatically generated to run `ansible-playbook --syntax-check`:
+
+```shell
+bazel test //examples/collections:my_playbook_syntax_check_test
+```
+
