@@ -1,8 +1,9 @@
 # Basic example
 
-See the `BUILD.bazel` file. It's very simple. It loads the playbook and the
-inventory. Edit `inventory.yaml` to reference a host you own (or override it
-with `-i`; see below). Then you can just run the `ansible_playbook` target:
+See the `BUILD.bazel` file. It's very simple. It loads the playbook, optional
+configuration file (`ansible.cfg`), and the inventory. Edit `inventory.yaml` to
+reference a host you own (or override it with `-i`; see below). Then you can just
+run the `ansible_playbook` target:
 
 ```shell
 bazel run //examples/basic:my_playbook

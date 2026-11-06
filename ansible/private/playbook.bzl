@@ -3,11 +3,15 @@
 load("@aspect_rules_py//py:defs.bzl", aspect_py_binary = "py_binary", aspect_py_test = "py_test")
 load("@rules_python//python/entry_points:py_console_script_binary.bzl", "py_console_script_binary")
 
-def _ansible_playbook_impl(name, visibility, src, collections, data, deps, env, inventory, _pkg):
+def _ansible_playbook_impl(name, visibility, src, collections, config, data, deps, env, inventory, _pkg):
     addl_data = [src, inventory]
     addl_env = {
         "ANSIBLE_INVENTORY": "$(location {})".format(inventory),
     }
+
+    if config:
+        addl_env["ANSIBLE_CONFIG"] = "$(location {})".format(config)
+        addl_data.append(config)
 
     if collections:
         addl_env["COLLECTIONS_PATH"] = "$(location {})".format(collections)
@@ -62,6 +66,11 @@ Also creates an implicit test target `{name}_syntax_check_test` which runs
         ),
         "collections": attr.label(
             doc = "Collections to use.",
+            configurable = False,
+        ),
+        "config": attr.label(
+            doc = "Ansible configuration file (ansible.cfg).",
+            allow_single_file = [".cfg", ".ini"],
             configurable = False,
         ),
         "data": attr.label_list(
