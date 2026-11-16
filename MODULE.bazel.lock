@@ -2216,8 +2216,8 @@
       "dist_hashes": {
         "https://pypi.org/simple": {
           "ansible-core": {
-            "https://files.pythonhosted.org/packages/0b/27/d02c3f75e9f1468b5efbe49667574f68331b17e8a9f2bb99e1d18be70052/ansible_core-2.21.5.tar.gz": "65bb3148c58ebb843cd5074004c805f404f152114d98476dd823324616c9c6cb",
-            "https://files.pythonhosted.org/packages/57/6f/7321059b2d1a5ea3c7e60807a5269942d93b2c11a2fc89ba8e4a3e827891/ansible_core-2.21.5-py3-none-any.whl": "08886f9f3e23d129aa98a01271c4a47833516e1cb7c737a246788cb474f41222"
+            "https://files.pythonhosted.org/packages/87/98/3dc2d37181dc6a4b39d7badffaa0ef6e95be638d618372a11c316a2f8983/ansible_core-2.22.0-py3-none-any.whl": "8285d4cc81c3e3eb2d954e75531724fe0ae154d228475638123451f034a74657",
+            "https://files.pythonhosted.org/packages/9d/9c/320090b2f1542122259cd759d5148678fd98945913837ee05718920f73ea/ansible_core-2.22.0.tar.gz": "bf50b4a0cfa985e30585c7ba301897ea7050d224ca49d2816cab10e33a160e1c"
           },
           "backports-tarfile": {
             "https://files.pythonhosted.org/packages/86/72/cd9b395f25e290e633655a100af28cb253e4393396264a98bd5f5951d50f/backports_tarfile-1.2.0.tar.gz": "d75e02c268746e1b8144c278978b6e98e85de6ad16f8e4b0844a154557eca991",
